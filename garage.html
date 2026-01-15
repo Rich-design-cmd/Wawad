@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wirecars - Garage Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-2xl font-bold flex items-center">
+                        <i class="fas fa-car mr-2"></i>
+                        Wirecars
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">History</a>
+                        <a href="cars.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cars</a>
+                        <a href="events.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Events</a>
+                        <a href="garage.html" class="bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">Garage</a>
+                        <a href="forum.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Forum</a>
+                        <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">History</a>
+                <a href="cars.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Cars</a>
+                <a href="events.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Events</a>
+                <a href="garage.html" class="bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">Garage</a>
+                <a href="forum.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Forum</a>
+                <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-orange-600 to-orange-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold text-white mb-4">The Garage</h1>
+            <p class="text-xl text-orange-100">Learn how to build your own wirecar with our comprehensive guides</p>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button class="category-btn active px-4 py-2 rounded-full bg-orange-600 text-white font-medium" data-category="all">
+                    All Guides
+                </button>
+                <button class="category-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="wheels">
+                    Wheels
+                </button>
+                <button class="category-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="steering">
+                    Steering Wheel
+                </button>
+                <button class="category-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="chassis">
+                    Chassis
+                </button>
+                <button class="category-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="body">
+                    Body Work
+                </button>
+                <button class="category-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="tools">
+                    Tools & Materials
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manuals Grid -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="manuals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Manuals loaded dynamically -->
+                <div class="text-center py-12 col-span-full">
+                    <i class="fas fa-spinner fa-spin text-4xl text-orange-600 mb-4"></i>
+                    <p class="text-gray-600">Loading guides...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manual Detail Modal -->
+    <div id="manual-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 overflow-y-auto">
+        <div class="min-h-screen px-4 py-8">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-2xl">
+                <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center rounded-t-lg">
+                    <h2 id="modal-title" class="text-3xl font-bold text-gray-900"></h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div id="modal-content" class="p-8">
+                    <!-- Content loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Join Our Mailing List</h2>
+            <p class="text-blue-100 mb-8">Stay updated with the latest wirecar stories and events</p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 justify-center">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" required class="flex-1 max-w-md px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                    Subscribe
+                </button>
+            </form>
+            <div id="newsletter-message" class="mt-4 text-white"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-car mr-2"></i>
+                        Wirecars
+                    </h3>
+                    <p class="text-gray-400">Celebrating the art and culture of handmade wirecars worldwide.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="cars.html" class="text-gray-400 hover:text-white transition-colors">Cars Gallery</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="garage.html" class="text-gray-400 hover:text-white transition-colors">Garage Wiki</a></li>
+                        <li><a href="forum.html" class="text-gray-400 hover:text-white transition-colors">Forum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-700 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p class="text-gray-400 mt-4">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email: johnson@wirecars.org
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Wirecars. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module">
+        import { manualsAPI } from './scripts/api.js';
+
+        let allManuals = [];
+        let currentCategory = 'all';
+
+        // Category icons
+        const categoryIcons = {
+            wheels: 'fa-circle-notch',
+            steering: 'fa-steering-wheel',
+            chassis: 'fa-car-side',
+            body: 'fa-paint-brush',
+            tools: 'fa-tools'
+        };
+
+        // Load manuals
+        async function loadManuals() {
+            try {
+                allManuals = await manualsAPI.getAll();
+                displayManuals(currentCategory);
+            } catch (error) {
+                console.error('Error loading manuals:', error);
+                document.getElementById('manuals-grid').innerHTML = '<p class="text-center text-red-600 py-12 col-span-full">Failed to load guides</p>';
+            }
+        }
+
+        // Display manuals
+        function displayManuals(category) {
+            const filteredManuals = category === 'all' 
+                ? allManuals 
+                : allManuals.filter(m => m.category === category);
+
+            const grid = document.getElementById('manuals-grid');
+            
+            if (filteredManuals.length === 0) {
+                grid.innerHTML = '<p class="text-center text-gray-600 py-12 col-span-full">No guides available in this category yet.</p>';
+                return;
+            }
+
+            // Mock data for demo
+            const mockManuals = [
+                {
+                    id: '1',
+                    title: 'How to Make Wire Wheels',
+                    category: 'wheels',
+                    content: 'Learn the art of crafting perfect wire wheels for your wirecar. This comprehensive guide covers everything from selecting the right gauge wire to creating realistic hubcaps and ensuring proper alignment.',
+                    images: ['https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400']
+                },
+                {
+                    id: '2',
+                    title: 'Steering Wheel Construction',
+                    category: 'steering',
+                    content: 'Build a functional and aesthetically pleasing steering mechanism. This tutorial walks you through creating responsive steering that actually turns the front wheels of your wirecar.',
+                    images: ['https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400']
+                },
+                {
+                    id: '3',
+                    title: 'Basic Chassis Design',
+                    category: 'chassis',
+                    content: 'The foundation of every great wirecar. Learn how to construct a sturdy chassis that can support your design while maintaining flexibility for customization.',
+                    images: ['https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400']
+                },
+                {
+                    id: '4',
+                    title: 'Essential Tools for Beginners',
+                    category: 'tools',
+                    content: 'A complete list of tools you need to get started with wirecar making, from basic pliers to specialized bending tools.',
+                    images: []
+                },
+                {
+                    id: '5',
+                    title: 'Body Panel Techniques',
+                    category: 'body',
+                    content: 'Master the art of creating realistic body panels and contours using simple wire bending techniques.',
+                    images: []
+                },
+                {
+                    id: '6',
+                    title: 'Advanced Suspension Systems',
+                    category: 'chassis',
+                    content: 'Take your wirecars to the next level with working suspension systems that add realism and functionality.',
+                    images: []
+                }
+            ];
+
+            grid.innerHTML = mockManuals.map(manual => `
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 cursor-pointer" onclick="openManual('${manual.id}')">
+                    ${manual.images && manual.images.length > 0 ? `
+                        <img src="${manual.images[0]}" alt="${manual.title}" class="w-full h-48 object-cover">
+                    ` : `
+                        <div class="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                            <i class="fas ${categoryIcons[manual.category] || 'fa-book'} text-6xl text-white opacity-75"></i>
+                        </div>
+                    `}
+                    <div class="p-6">
+                        <div class="text-sm text-orange-600 font-semibold mb-2 uppercase">${manual.category}</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">${manual.title}</h3>
+                        <p class="text-gray-600 text-sm mb-4">${manual.content.substring(0, 100)}...</p>
+                        <button class="text-orange-600 hover:text-orange-800 font-medium">
+                            Read Guide <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Open manual modal
+        window.openManual = async function(manualId) {
+            const mockManualData = {
+                id: manualId,
+                title: 'How to Make Wire Wheels',
+                content: `
+                    <h2 class="text-2xl font-bold mb-4">Complete Guide to Wire Wheel Construction</h2>
+                    <p class="mb-4">Creating wire wheels is both an art and a science. With patience and practice, you can produce wheels that are both beautiful and functional.</p>
+                    
+                    <h3 class="text-xl font-bold mt-6 mb-3">Materials Needed:</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>16-gauge galvanized steel wire</li>
+                        <li>Wire cutters</li>
+                        <li>Round-nose pliers</li>
+                        <li>Needle-nose pliers</li>
+                        <li>Measuring tape</li>
+                        <li>Marker</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-bold mt-6 mb-3">Key Principles:</h3>
+                    <p>1. <strong>Consistency is key</strong> - All spokes should be identical in length and tension.</p>
+                    <p>2. <strong>Patience pays off</strong> - Don't rush the process; take your time with each bend.</p>
+                    <p>3. <strong>Test as you go</strong> - Regularly check that the wheel rolls smoothly on a flat surface.</p>
+                `,
+                steps: [
+                    'Measure and cut 12 equal lengths of wire for spokes (approximately 15cm each)',
+                    'Create a central hub by bending one wire into a small circle',
+                    'Attach spokes evenly around the hub, securing with small wire ties',
+                    'Bend the ends of the spokes outward to create the wheel rim',
+                    'Add a second layer of wire around the rim for strength',
+                    'Test the wheel for balance and adjust as needed'
+                ],
+                images: [
+                    'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400',
+                    'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400'
+                ]
+            };
+            
+            document.getElementById('modal-title').textContent = mockManualData.title;
+            
+            let content = `
+                <div class="prose prose-lg max-w-none">
+                    ${mockManualData.content}
+                </div>
+            `;
+
+            // Display steps
+            content += `
+                <div class="mt-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Step-by-Step Instructions</h3>
+                    <div class="space-y-6">
+                        ${mockManualData.steps.map((step, index) => `
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0 w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold">
+                                    ${index + 1}
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-gray-700">${step}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Display images
+            content += `
+                <div class="mt-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Reference Images</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        ${mockManualData.images.map(img => `
+                            <img src="${img}" alt="Reference" class="rounded-lg shadow">
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('manual-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Close modal
+        document.getElementById('close-modal').addEventListener('click', () => {
+            document.getElementById('manual-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Category filtering
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentCategory = btn.dataset.category;
+                
+                // Update active state
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-orange-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                btn.classList.add('active', 'bg-orange-600', 'text-white');
+                btn.classList.remove('bg-gray-200', 'text-gray-700');
+
+                displayManuals(currentCategory);
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadManuals();
+        });
+    </script>
+</body>
+</html>

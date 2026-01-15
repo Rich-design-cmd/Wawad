@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wirecars - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-2xl font-bold flex items-center">
+                        <i class="fas fa-car mr-2"></i>
+                        Wirecars
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">History</a>
+                        <a href="cars.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cars</a>
+                        <a href="events.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Events</a>
+                        <a href="garage.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Garage</a>
+                        <a href="forum.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Forum</a>
+                        <a href="contact.html" class="bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">History</a>
+                <a href="cars.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Cars</a>
+                <a href="events.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Events</a>
+                <a href="garage.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Garage</a>
+                <a href="forum.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Forum</a>
+                <a href="contact.html" class="bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-teal-600 to-teal-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold text-white mb-4">Get In Touch</h1>
+            <p class="text-xl text-teal-100">We'd love to hear from you and your wirecar stories</p>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
+                    <p class="text-gray-600">johnson@wirecars.org</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
+                    <p class="text-gray-600">12449 Conant Street<br>Detroit, MI 48212</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-share-alt text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Follow Us</h3>
+                    <div class="flex justify-center space-x-4 mt-3">
+                        <a href="#" class="text-gray-600 hover:text-teal-600 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-teal-600 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-teal-600 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Newsletter Form -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8 transform hover:-translate-y-1 transition duration-300">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-envelope-open-text text-xl text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Join Our Mailing List</h2>
+                        <p class="text-gray-600">Stay updated with the latest wirecar news</p>
+                    </div>
+                </div>
+                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4">
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" required class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                        Subscribe
+                    </button>
+                </form>
+                <div id="newsletter-message" class="mt-4"></div>
+            </div>
+
+            <!-- Wirecar Submission Form -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8 transform hover:-translate-y-1 transition duration-300">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-car text-xl text-orange-600"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Share Your Wirecar</h2>
+                        <p class="text-gray-600">Do you have a wirecar to share with us?</p>
+                    </div>
+                </div>
+                <form id="wirecar-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Title of Car <span class="text-red-500">*</span></label>
+                        <input type="text" id="car-title" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">License <span class="text-red-500">*</span></label>
+                        <input type="text" id="car-license" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Country <span class="text-red-500">*</span></label>
+                        <input type="text" id="car-country" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">City <span class="text-red-500">*</span></label>
+                        <input type="text" id="car-city" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Year Built <span class="text-red-500">*</span></label>
+                        <input type="number" id="car-year" required min="1900" max="2026" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Makers <span class="text-red-500">*</span></label>
+                        <input type="text" id="car-makers" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Original Make</label>
+                        <input type="text" id="car-make" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Original Model</label>
+                        <input type="text" id="car-model" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Blueprints (URL)</label>
+                        <input type="url" id="car-blueprints" placeholder="https://" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Your Wirecar Story</label>
+                        <textarea id="car-story" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Tell us the story behind your wirecar..."></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                            Submit Wirecar
+                        </button>
+                    </div>
+                </form>
+                <div id="wirecar-message" class="mt-4"></div>
+            </div>
+
+            <!-- Contact/Story Form -->
+            <div class="bg-white rounded-lg shadow-lg p-8 transform hover:-translate-y-1 transition duration-300">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-pen text-xl text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Email Us Your Story</h2>
+                        <p class="text-gray-600">Share your wirecar story or get in touch</p>
+                    </div>
+                </div>
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Name <span class="text-red-500">*</span></label>
+                            <input type="text" id="contact-name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="contact-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <input type="text" id="contact-subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Message <span class="text-red-500">*</span></label>
+                        <textarea id="contact-message" rows="6" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                        Send Message
+                    </button>
+                </form>
+                <div id="contact-message-status" class="mt-4"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-car mr-2"></i>
+                        Wirecars
+                    </h3>
+                    <p class="text-gray-400">Celebrating the art and culture of handmade wirecars worldwide.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="cars.html" class="text-gray-400 hover:text-white transition-colors">Cars Gallery</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="garage.html" class="text-gray-400 hover:text-white transition-colors">Garage Wiki</a></li>
+                        <li><a href="forum.html" class="text-gray-400 hover:text-white transition-colors">Forum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-700 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p class="text-gray-400 mt-4">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email: johnson@wirecars.org
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Wirecars. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+    <script>
+        // Newsletter form
+        document.getElementById('newsletter-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            const messageDiv = document.getElementById('newsletter-message');
+
+            // Simulate API call
+            setTimeout(() => {
+                messageDiv.innerHTML = '<p class="text-green-600 font-medium">Thank you for subscribing!</p>';
+                document.getElementById('newsletter-email').value = '';
+                
+                setTimeout(() => {
+                    messageDiv.innerHTML = '';
+                }, 3000);
+            }, 500);
+        });
+
+        // Wirecar submission form
+        document.getElementById('wirecar-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('wirecar-message');
+
+            // Validate required fields
+            const requiredFields = ['car-title', 'car-license', 'car-country', 'car-city', 'car-year', 'car-makers'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    field.classList.remove('border-red-500');
+                }
+            });
+
+            if (!isValid) {
+                messageDiv.innerHTML = '<p class="text-red-600 font-medium">Please fill in all required fields marked with *</p>';
+                return;
+            }
+
+            // Simulate API call
+            setTimeout(() => {
+                messageDiv.innerHTML = '<p class="text-green-600 font-medium">Thank you! Your wirecar has been submitted for review.</p>';
+                document.getElementById('wirecar-form').reset();
+                
+                setTimeout(() => {
+                    messageDiv.innerHTML = '';
+                }, 5000);
+            }, 1000);
+        });
+
+        // Contact form
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const statusDiv = document.getElementById('contact-message-status');
+
+            // Validate required fields
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+
+            if (!name || !email || !message) {
+                statusDiv.innerHTML = '<p class="text-red-600 font-medium">Please fill in all required fields</p>';
+                return;
+            }
+
+            // Simulate API call
+            setTimeout(() => {
+                statusDiv.innerHTML = '<p class="text-green-600 font-medium">Thank you! Your message has been sent.</p>';
+                document.getElementById('contact-form').reset();
+                
+                setTimeout(() => {
+                    statusDiv.innerHTML = '';
+                }, 5000);
+            }, 1000);
+        });
+
+        // Add input validation styling
+        document.querySelectorAll('#wirecar-form input, #wirecar-form textarea').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.classList.add('border-red-500');
+                } else {
+                    this.classList.remove('border-red-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wirecars - Forum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white text-2xl font-bold flex items-center">
+                        <i class="fas fa-car mr-2"></i>
+                        Wirecars
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">History</a>
+                        <a href="cars.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cars</a>
+                        <a href="events.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Events</a>
+                        <a href="garage.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Garage</a>
+                        <a href="forum.html" class="bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">Forum</a>
+                        <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">History</a>
+                <a href="cars.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Cars</a>
+                <a href="events.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Events</a>
+                <a href="garage.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Garage</a>
+                <a href="forum.html" class="bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">Forum</a>
+                <a href="contact.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-purple-600 to-purple-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h1 class="text-5xl font-bold text-white mb-4">Discussion Forum</h1>
+                    <p class="text-xl text-purple-100">Share your wirecar projects and connect with makers</p>
+                </div>
+                <button id="new-thread-btn" class="mt-4 md:mt-0 bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center gap-2 transform hover:-translate-y-1">
+                    <i class="fas fa-plus"></i>
+                    New Thread
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-8 bg-white border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap gap-2">
+                <button class="category-filter active px-4 py-2 rounded-full bg-purple-600 text-white font-medium" data-category="all">
+                    All Discussions
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="car-talk">
+                    <i class="fas fa-comments mr-1"></i>
+                    Car Talk
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="wip">
+                    <i class="fas fa-hammer mr-1"></i>
+                    Work in Progress
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium" data-category="general">
+                    <i class="fas fa-cube mr-1"></i>
+                    General
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forum Threads -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="threads-list" class="space-y-4">
+                <!-- Threads loaded dynamically -->
+                <div class="text-center py-12">
+                    <i class="fas fa-spinner fa-spin text-4xl text-purple-600 mb-4"></i>
+                    <p class="text-gray-600">Loading discussions...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Thread Modal -->
+    <div id="new-thread-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b p-6 flex justify-between items-center rounded-t-lg">
+                <h2 class="text-2xl font-bold text-gray-900">Start a New Discussion</h2>
+                <button id="close-thread-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <form id="new-thread-form" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                    <input type="text" id="thread-username" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                    <select id="thread-category" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <option value="car-talk">Car Talk</option>
+                        <option value="wip">Work in Progress</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                    <input type="text" id="thread-title" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                    <textarea id="thread-content" rows="6" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button type="button" id="cancel-thread" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium">
+                        Post Discussion
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-blue-800">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Join Our Mailing List</h2>
+            <p class="text-blue-100 mb-8">Stay updated with the latest wirecar stories and events</p>
+            <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 justify-center">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" required class="flex-1 max-w-md px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <button type="submit" class="bg-gray-900 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
+                    Subscribe
+                </button>
+            </form>
+            <div id="newsletter-message" class="mt-4 text-white"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-car mr-2"></i>
+                        Wirecars
+                    </h3>
+                    <p class="text-gray-400">Celebrating the art and culture of handmade wirecars worldwide.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="cars.html" class="text-gray-400 hover:text-white transition-colors">Cars Gallery</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="garage.html" class="text-gray-400 hover:text-white transition-colors">Garage Wiki</a></li>
+                        <li><a href="forum.html" class="text-gray-400 hover:text-white transition-colors">Forum</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-500 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-700 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p class="text-gray-400 mt-4">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email: johnson@wirecars.org
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Wirecars. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module">
+        import { forumAPI } from './scripts/api.js';
+
+        let allThreads = [];
+        let currentCategory = 'all';
+
+        // Category badges
+        const categoryBadges = {
+            'car-talk': 'bg-blue-100 text-blue-800',
+            'wip': 'bg-orange-100 text-orange-800',
+            'general': 'bg-gray-100 text-gray-800'
+        };
+
+        // Mock data for demo
+        const mockThreads = [
+            {
+                id: 1,
+                title: 'Help with steering mechanism',
+                user_name: 'Marcus J.',
+                category: 'wip',
+                created_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+                last_activity: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
+                forum_posts: [{ count: 5 }]
+            },
+            {
+                id: 2,
+                title: 'Showcase: My 1950s Classic Collection',
+                user_name: 'Alicia T.',
+                category: 'car-talk',
+                created_at: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+                last_activity: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+                forum_posts: [{ count: 18 }]
+            },
+            {
+                id: 3,
+                title: 'Best wire for beginners?',
+                user_name: 'Raj K.',
+                category: 'general',
+                created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+                last_activity: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+                forum_posts: [{ count: 14 }]
+            },
+            {
+                id: 4,
+                title: 'Detroit Wire Car Festival - Who\'s going?',
+                user_name: 'Sarah M.',
+                category: 'car-talk',
+                created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+                last_activity: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
+                forum_posts: [{ count: 9 }]
+            }
+        ];
+
+        // Load threads
+        async function loadThreads() {
+            try {
+                // In production: allThreads = await forumAPI.getThreads();
+                allThreads = mockThreads;
+                displayThreads(currentCategory);
+            } catch (error) {
+                console.error('Error loading threads:', error);
+                document.getElementById('threads-list').innerHTML = '<p class="text-center text-red-600 py-12">Failed to load discussions</p>';
+            }
+        }
+
+        // Display threads
+        function displayThreads(category) {
+            const filteredThreads = category === 'all' 
+                ? allThreads 
+                : allThreads.filter(t => t.category === category);
+
+            const list = document.getElementById('threads-list');
+            
+            if (filteredThreads.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-12 bg-white rounded-lg">
+                        <i class="fas fa-comments text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-600">No discussions yet. Be the first to start one!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = filteredThreads.map(thread => {
+                const postCount = thread.forum_posts ? thread.forum_posts[0]?.count || 0 : 0;
+                return `
+                    <a href="forum-thread.html?id=${thread.id}" class="block bg-white rounded-lg shadow hover:shadow-lg transition duration-300 p-6 transform hover:-translate-y-1">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-1 text-xs font-semibold rounded ${categoryBadges[thread.category]}">${thread.category.replace('-', ' ').toUpperCase()}</span>
+                                    <span class="text-sm text-gray-500">${formatDate(thread.created_at)}</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2 hover:text-purple-600">${thread.title}</h3>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-user mr-2"></i>
+                                    <span>Started by ${thread.user_name}</span>
+                                    <span class="mx-2">•</span>
+                                    <i class="fas fa-comment mr-2"></i>
+                                    <span>${postCount} ${postCount === 1 ? 'reply' : 'replies'}</span>
+                                    <span class="mx-2">•</span>
+                                    <span class="text-xs">Last activity ${formatRelativeTime(thread.last_activity)}</span>
+                                </div>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-400 mt-2"></i>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Format relative time
+        function formatRelativeTime(dateString) {
+            const now = new Date();
+            const past = new Date(dateString);
+            const diffMs = now - past;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            return formatDate(dateString);
+        }
+
+        // Modal controls
+        document.getElementById('new-thread-btn').addEventListener('click', () => {
+            document.getElementById('new-thread-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.getElementById('close-thread-modal').addEventListener('click', closeModal);
+        document.getElementById('cancel-thread').addEventListener('click', closeModal);
+
+        function closeModal() {
+            document.getElementById('new-thread-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            document.getElementById('new-thread-form').reset();
+        }
+
+        // Submit new thread
+        document.getElementById('new-thread-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const threadData = {
+                user_name: document.getElementById('thread-username').value,
+                category: document.getElementById('thread-category').value,
+                title: document.getElementById('thread-title').value
+            };
+
+            const postData = {
+                user_name: threadData.user_name,
+                content: document.getElementById('thread-content').value
+            };
+
+            try {
+                // In production:
+                // const newThread = await forumAPI.createThread(threadData);
+                // postData.thread_id = newThread.id;
+                // await forumAPI.createPost(postData);
+                
+                // For demo:
+                const newThread = {
+                    id: allThreads.length + 1,
+                    ...threadData,
+                    created_at: new Date().toISOString(),
+                    last_activity: new Date().toISOString(),
+                    forum_posts: [{ count: 0 }]
+                };
+                
+                allThreads.unshift(newThread);
+                closeModal();
+                window.location.href = `forum-thread.html?id=${newThread.id}`;
+            } catch (error) {
+                console.error('Error creating thread:', error);
+                alert('Failed to create discussion. Please try again.');
+            }
+        });
+
+        // Category filtering
+        document.querySelectorAll('.category-filter').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentCategory = btn.dataset.category;
+                
+                document.querySelectorAll('.category-filter').forEach(b => {
+                    b.classList.remove('active', 'bg-purple-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                btn.classList.add('active', 'bg-purple-600', 'text-white');
+                btn.classList.remove('bg-gray-200', 'text-gray-700');
+
+                displayThreads(currentCategory);
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadThreads();
+        });
+    </script>
+</body>
+</html>
